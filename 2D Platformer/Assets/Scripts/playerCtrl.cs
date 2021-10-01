@@ -10,10 +10,19 @@ public class playerCtrl : MonoBehaviour
     int idMove = 0;
     Animator anim;
 
+    public GameObject projectile;
+    public Vector2 projectileVelocity;
+    public Vector2 projectileOffset;
+    public float cooldown = 0.5f;
+    bool isCanShoot = true;
+
+    public static int enemyKilled = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        isCanShoot = false;
     }
 
     // Update is called once per frame
@@ -41,6 +50,10 @@ public class playerCtrl : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             idle();
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            fire();
         }
         move();
         dead();
@@ -115,6 +128,32 @@ public class playerCtrl : MonoBehaviour
         idMove = 0;
     }
 
+    void fire()
+    {
+        if (isCanShoot)
+        {
+            GameObject bullet = Instantiate(projectile, (Vector2)transform.position - projectileOffset * transform.localScale.x,
+                Quaternion.identity);
+
+            Vector2 velocity = new Vector2(projectileVelocity.x * transform.localScale.x, projectileVelocity.y);
+            bullet.GetComponent<Rigidbody2D>().velocity = velocity * -1;
+
+            Vector3 scale = transform.localScale;
+            bullet.transform.localScale = scale * -1;
+
+            StartCoroutine(canShoot());
+            anim.SetTrigger("shoot");
+        }
+    }
+
+    IEnumerator canShoot()
+    {
+        anim.SetTrigger("shoot");
+        isCanShoot = false;
+        yield return new WaitForSeconds(cooldown);
+        isCanShoot = true;
+    }
+
     private void dead()
     {
         if (!isDead)
@@ -123,6 +162,18 @@ public class playerCtrl : MonoBehaviour
             {
                 isDead = true;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag.Equals("peluru"))
+        {
+            isCanShoot = true;
+        }
+        if (collision.transform.tag.Equals("enemy"))
+        {
+            isDead = true;
         }
     }
 

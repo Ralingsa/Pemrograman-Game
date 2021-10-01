@@ -64,8 +64,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\bullet.cs" />
+    <Compile Include="Assets\Scripts\enemyCtrl.cs" />
     <Compile Include="Assets\Scripts\followTarget.cs" />
     <Compile Include="Assets\Scripts\playerCtrl.cs" />
+    <Compile Include="Assets\Scripts\quitOrNext.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/training base/Pemrograman GAme/Pemrograman-Game/2D Platformer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

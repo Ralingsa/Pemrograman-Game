@@ -64,11 +64,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\autoReplay.cs" />
     <Compile Include="Assets\Scripts\bullet.cs" />
+    <Compile Include="Assets\Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\enemyCtrl.cs" />
     <Compile Include="Assets\Scripts\followTarget.cs" />
+    <Compile Include="Assets\Scripts\gameOver.cs" />
     <Compile Include="Assets\Scripts\playerCtrl.cs" />
     <Compile Include="Assets\Scripts\quitOrNext.cs" />
+    <Compile Include="Assets\Scripts\showScore.cs" />
+    <Compile Include="Assets\Scripts\soundManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/training base/Pemrograman GAme/Pemrograman-Game/2D Platformer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

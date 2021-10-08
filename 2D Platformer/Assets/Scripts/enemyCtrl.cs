@@ -89,7 +89,7 @@ public class enemyCtrl : MonoBehaviour
             isDie = true;
             rigid.velocity = Vector2.zero;
             anim.SetBool("isDie", true);
-            //data.score += 20;
+            Data.data.score += 20;
             enemykilled++;
             if (enemykilled == 3)
             {

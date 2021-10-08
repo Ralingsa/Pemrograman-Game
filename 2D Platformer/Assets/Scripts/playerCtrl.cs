@@ -181,7 +181,7 @@ public class playerCtrl : MonoBehaviour
     {
         if (collision.transform.tag.Equals("coin"))
         {
-            //data.score += 15;
+            Data.data.score += 15;
             Destroy(collision.gameObject);
         }
     }

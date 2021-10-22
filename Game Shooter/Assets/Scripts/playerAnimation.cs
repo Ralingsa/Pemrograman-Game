@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerAnimation : MonoBehaviour
 {
     public float speed = 4, rotSpeed = 80,
-                    rot = 0f, gravitiy = 8;
+                    rot = 0f, gravity = 8;
     Animator anim;
     Vector3 moveDir = Vector3.zero;
     CharacterController controller;

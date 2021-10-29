@@ -64,9 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AIEnemyCtrl.cs" />
     <Compile Include="Assets\Scripts\ammoBox.cs" />
     <Compile Include="Assets\Scripts\changeCamera.cs" />
+    <Compile Include="Assets\Scripts\enemySpawner.cs" />
     <Compile Include="Assets\Scripts\playerAnimation.cs" />
+    <Compile Include="Assets\Scripts\sceneManager.cs" />
     <Compile Include="Assets\Scripts\swapWeapons.cs" />
     <Compile Include="Assets\Scripts\UImanager.cs" />
     <Compile Include="Assets\Scripts\weaponCtrl.cs" />

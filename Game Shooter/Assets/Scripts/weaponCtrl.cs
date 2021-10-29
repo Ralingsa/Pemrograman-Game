@@ -15,12 +15,18 @@ public class weaponCtrl : MonoBehaviour
     public int health = 100, ammoStock = 30;
     public Slider healthBar;
 
+    public AudioSource ak47Shot;
+    public AudioSource shotgunShot;
+    public AudioSource weaponReaload;
+
     [SerializeField] Camera fpsCamera, tpsCamera;
 
     public void shoot()
     {
         if (ammo != 0)
         {
+            ak47Shot.Play();
+            shotgunShot.Play();
             RaycastHit hit;
             Ray ray = new Ray(transform.position, transform.forward);
             if(Physics.Raycast(ray,out hit, range))
@@ -58,6 +64,7 @@ public class weaponCtrl : MonoBehaviour
         }
         if (Input.GetButton("Reload") && ammo < ammoStock)
         {
+            weaponReaload.Play();
             if (ammoMag != 0)
             {
                 trigger = false;
@@ -66,6 +73,20 @@ public class weaponCtrl : MonoBehaviour
             else
             {
                 Debug.Log("peluru habis");
+            }
+        }
+        if (AIEnemyCtrl.giveDamage == true)
+        {
+            health -= AIEnemyCtrl.enemyDamage;
+            healthBar.value = health;
+
+            if (health <= 0)
+            {
+                Debug.Log("player mati");
+                //SceneManager.LoadScene("game over");
+                SceneManager.LoadScene("game over");
+                AIEnemyCtrl.giveDamage = false;
+                restart();
             }
         }
     }
